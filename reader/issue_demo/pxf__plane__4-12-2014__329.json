@@ -1,0 +1,34 @@
+{
+  "log": "pxf/plane/4-12-2014/329.BIN",
+  "predicted_issue": "failsafe_or_battery_issue",
+  "confidence": 0.9,
+  "scores": {
+    "gps_issue": 0.12,
+    "failsafe_or_battery_issue": 0.9,
+    "altitude_control_issue": 0.0,
+    "sensor_or_ekf_issue": 0.0,
+    "no_obvious_issue": 0.0
+  },
+  "evidence": [
+    {
+      "table": "MSG",
+      "time": 1417705367.9190001,
+      "reason": "Message text contains failsafe language: 'Failsafe - Short event on, '.",
+      "score": 0.48,
+      "row": {
+        "timestamp": 1417705367.9190001,
+        "Message": "Failsafe - Short event on, "
+      }
+    },
+    {
+      "table": "MSG",
+      "time": 1417705378.0010002,
+      "reason": "Message text contains battery warning text: 'Low Battery 0.05V Used 0 mAh'.",
+      "score": 0.42,
+      "row": {
+        "timestamp": 1417705378.0010002,
+        "Message": "Low Battery 0.05V Used 0 mAh"
+      }
+    }
+  ]
+}

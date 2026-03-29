@@ -1,0 +1,19 @@
+{
+  "log_count": 6,
+  "issue_counts": {
+    "gps_issue": 2,
+    "altitude_control_issue": 1,
+    "sensor_or_ekf_issue": 1,
+    "failsafe_or_battery_issue": 1,
+    "no_obvious_issue": 1
+  },
+  "most_frequent_err_subsystems": {
+    "11.0": 1,
+    "7.0": 1,
+    "16.0": 1
+  },
+  "most_frequent_ev_ids": {
+    "25.0": 1
+  },
+  "average_evidence_count": 2.0
+}

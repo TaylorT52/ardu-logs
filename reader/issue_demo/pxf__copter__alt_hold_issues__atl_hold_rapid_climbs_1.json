@@ -1,0 +1,54 @@
+{
+  "log": "pxf/copter/alt_hold_issues/atl_hold_rapid_climbs_1.BIN",
+  "predicted_issue": "altitude_control_issue",
+  "confidence": 0.95,
+  "scores": {
+    "gps_issue": 0.24,
+    "failsafe_or_battery_issue": 0.0,
+    "altitude_control_issue": 0.95,
+    "sensor_or_ekf_issue": 0.78,
+    "no_obvious_issue": 0.0
+  },
+  "evidence": [
+    {
+      "table": "CTUN",
+      "time": 1427878617.8760002,
+      "reason": "Altitude tracking error was large (95th percentile 40.60 m, max 47.77 m).",
+      "score": 0.55,
+      "row": {
+        "timestamp": 1427878617.8760002,
+        "TimeMS": 59344.0,
+        "ThrIn": 282.0,
+        "AngBst": 54.0,
+        "ThrOut": 318.0,
+        "DAlt": 0.0,
+        "Alt": 47.77433776855469,
+        "BarAlt": 58.32,
+        "DSAlt": 0.0,
+        "SAlt": 0.0,
+        "DCRt": -250.0,
+        "CRt": -632.0
+      }
+    },
+    {
+      "table": "CTUN",
+      "time": 1427878613.176,
+      "reason": "Climb-rate tracking error was large (95th percentile 1102.0, max 1634.0).",
+      "score": 0.3,
+      "row": {
+        "timestamp": 1427878613.176,
+        "TimeMS": 54644.0,
+        "ThrIn": 181.0,
+        "AngBst": 26.0,
+        "ThrOut": 201.0,
+        "DAlt": 0.0,
+        "Alt": 26.54848861694336,
+        "BarAlt": 62.39,
+        "DSAlt": 0.0,
+        "SAlt": 0.0,
+        "DCRt": -250.0,
+        "CRt": -1884.0
+      }
+    }
+  ]
+}

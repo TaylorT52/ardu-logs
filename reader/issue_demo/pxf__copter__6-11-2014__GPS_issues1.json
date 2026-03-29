@@ -1,0 +1,69 @@
+{
+  "log": "pxf/copter/6-11-2014/GPS_issues1.BIN",
+  "predicted_issue": "gps_issue",
+  "confidence": 0.95,
+  "scores": {
+    "gps_issue": 0.95,
+    "failsafe_or_battery_issue": 0.0,
+    "altitude_control_issue": 0.0,
+    "sensor_or_ekf_issue": 0.0,
+    "no_obvious_issue": 0.0
+  },
+  "evidence": [
+    {
+      "table": "ERR",
+      "time": 1415290144.1000001,
+      "reason": "ERR rows with subsystem in [7, 11, 12] appeared 3 time(s), which often lines up with GPS/EKF loss.",
+      "score": 0.65,
+      "row": {
+        "timestamp": 1415290144.1000001,
+        "Subsys": 11.0,
+        "ECode": 2.0
+      }
+    },
+    {
+      "table": "GPS",
+      "time": 1415290144.1000001,
+      "reason": "GPS status dropped to 1 or below after startup.",
+      "score": 0.18,
+      "row": {
+        "timestamp": 1415290144.1000001,
+        "Status": 0.0,
+        "TimeMS": 0.0,
+        "Week": 0.0,
+        "NSats": 0.0,
+        "HDop": 0.0,
+        "Lat": 0.0,
+        "Lng": 0.0,
+        "RelAlt": 5.78,
+        "Alt": 0.0,
+        "Spd": 0.0,
+        "GCrs": 0.0,
+        "VZ": 0.0,
+        "T": 97685.0
+      }
+    },
+    {
+      "table": "GPS",
+      "time": 1415290144.1000001,
+      "reason": "Poor GPS quality observed with HDop=0.0 and NSats=0.0.",
+      "score": 0.12,
+      "row": {
+        "timestamp": 1415290144.1000001,
+        "Status": 0.0,
+        "TimeMS": 0.0,
+        "Week": 0.0,
+        "NSats": 0.0,
+        "HDop": 0.0,
+        "Lat": 0.0,
+        "Lng": 0.0,
+        "RelAlt": 5.78,
+        "Alt": 0.0,
+        "Spd": 0.0,
+        "GCrs": 0.0,
+        "VZ": 0.0,
+        "T": 97685.0
+      }
+    }
+  ]
+}

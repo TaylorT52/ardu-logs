@@ -1,0 +1,26 @@
+{
+  "log": "pxf/copter/test/MS5611_SPI.BIN",
+  "predicted_issue": "sensor_or_ekf_issue",
+  "confidence": 0.74,
+  "scores": {
+    "gps_issue": 0.0,
+    "failsafe_or_battery_issue": 0.0,
+    "altitude_control_issue": 0.0,
+    "sensor_or_ekf_issue": 0.74,
+    "no_obvious_issue": 0.03
+  },
+  "evidence": [
+    {
+      "table": "ERR",
+      "time": 53.764005,
+      "reason": "ERR subsystem 16 appeared 5 time(s), suggesting repeated sensor/EKF instability in this log.",
+      "score": 0.74,
+      "row": {
+        "timestamp": 53.764005,
+        "TimeUS": 53764005.0,
+        "Subsys": 16.0,
+        "ECode": 2.0
+      }
+    }
+  ]
+}

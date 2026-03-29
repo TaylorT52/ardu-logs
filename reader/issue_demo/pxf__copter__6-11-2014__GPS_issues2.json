@@ -1,0 +1,79 @@
+{
+  "log": "pxf/copter/6-11-2014/GPS_issues2.BIN",
+  "predicted_issue": "gps_issue",
+  "confidence": 0.99,
+  "scores": {
+    "gps_issue": 1.17,
+    "failsafe_or_battery_issue": 0.0,
+    "altitude_control_issue": 0.0,
+    "sensor_or_ekf_issue": 0.0,
+    "no_obvious_issue": 0.0
+  },
+  "evidence": [
+    {
+      "table": "ERR",
+      "time": 1415290237.879,
+      "reason": "ERR rows with subsystem in [7, 11, 12] appeared 7 time(s), which often lines up with GPS/EKF loss.",
+      "score": 0.75,
+      "row": {
+        "timestamp": 1415290237.879,
+        "Subsys": 7.0,
+        "ECode": 1.0
+      }
+    },
+    {
+      "table": "GPS",
+      "time": 1415290277.8639998,
+      "reason": "GPS status dropped to 1 or below after startup.",
+      "score": 0.18,
+      "row": {
+        "timestamp": 1415290277.8639998,
+        "Status": 0.0,
+        "TimeMS": 0.0,
+        "Week": 0.0,
+        "NSats": 0.0,
+        "HDop": 0.0,
+        "Lat": 0.0,
+        "Lng": 0.0,
+        "RelAlt": 3.46,
+        "Alt": 0.0,
+        "Spd": 0.0,
+        "GCrs": 0.0,
+        "VZ": 0.0,
+        "T": 58478.0
+      }
+    },
+    {
+      "table": "GPS",
+      "time": 1415290277.8639998,
+      "reason": "Poor GPS quality observed with HDop=0.0 and NSats=0.0.",
+      "score": 0.12,
+      "row": {
+        "timestamp": 1415290277.8639998,
+        "Status": 0.0,
+        "TimeMS": 0.0,
+        "Week": 0.0,
+        "NSats": 0.0,
+        "HDop": 0.0,
+        "Lat": 0.0,
+        "Lng": 0.0,
+        "RelAlt": 3.46,
+        "Alt": 0.0,
+        "Spd": 0.0,
+        "GCrs": 0.0,
+        "VZ": 0.0,
+        "T": 58478.0
+      }
+    },
+    {
+      "table": "EV",
+      "time": 1415290237.879,
+      "reason": "EV id 25 appeared, which is useful as a GPS-loss-style event cue in this dataset.",
+      "score": 0.12,
+      "row": {
+        "timestamp": 1415290237.879,
+        "Id": 25.0
+      }
+    }
+  ]
+}

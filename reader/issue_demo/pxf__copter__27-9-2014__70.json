@@ -1,0 +1,13 @@
+{
+  "log": "pxf/copter/27-9-2014/70.BIN",
+  "predicted_issue": "no_obvious_issue",
+  "confidence": 0.35,
+  "scores": {
+    "gps_issue": 0.0,
+    "failsafe_or_battery_issue": 0.0,
+    "altitude_control_issue": 0.0,
+    "sensor_or_ekf_issue": 0.0,
+    "no_obvious_issue": 0.35
+  },
+  "evidence": []
+}

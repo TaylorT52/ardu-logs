@@ -1,0 +1,7 @@
+log_name,predicted_issue,confidence,evidence_count,top_evidence_table,top_evidence_time,top_evidence_reason
+pxf/copter/6-11-2014/GPS_issues1.BIN,gps_issue,0.95,3,ERR,1415290144.1000001,"ERR rows with subsystem in [7, 11, 12] appeared 3 time(s), which often lines up with GPS/EKF loss."
+pxf/copter/6-11-2014/GPS_issues2.BIN,gps_issue,0.99,4,ERR,1415290237.879,"ERR rows with subsystem in [7, 11, 12] appeared 7 time(s), which often lines up with GPS/EKF loss."
+pxf/copter/alt_hold_issues/atl_hold_rapid_climbs_1.BIN,altitude_control_issue,0.95,2,CTUN,1427878617.8760002,"Altitude tracking error was large (95th percentile 40.60 m, max 47.77 m)."
+pxf/copter/test/MS5611_SPI.BIN,sensor_or_ekf_issue,0.74,1,ERR,53.764005,"ERR subsystem 16 appeared 5 time(s), suggesting repeated sensor/EKF instability in this log."
+pxf/plane/4-12-2014/329.BIN,failsafe_or_battery_issue,0.9,2,MSG,1417705367.9190001,"Message text contains failsafe language: 'Failsafe - Short event on, '."
+pxf/copter/27-9-2014/70.BIN,no_obvious_issue,0.35,0,none,,no strong evidence

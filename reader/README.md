@@ -41,3 +41,20 @@ GPS-style data:
 ```bash
 .venv/bin/python reader/binreader.py pxf/plane/4-12-2014/329.BIN --show-types GPS MODE
 ```
+
+Issue detector demo:
+```bash
+.venv/bin/python reader/issue_detector.py --demo
+```
+
+This runs a small heuristic detector one layer above parsing and writes:
+- `reader/issue_demo/summary.csv`
+- `reader/issue_demo/batch_stats.json`
+- one JSON file per analyzed log with issue label, confidence, and evidence rows
+
+Current demo labels:
+- `gps_issue`
+- `failsafe_or_battery_issue`
+- `altitude_control_issue`
+- `sensor_or_ekf_issue`
+- `no_obvious_issue`
