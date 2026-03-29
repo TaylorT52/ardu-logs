@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ArduPilot Log Report</title>
+    <style>
+      :root {
+        --bg: #f5efe3;
+        --panel: rgba(255, 252, 245, 0.92);
+        --panel-strong: #fffdf8;
+        --text: #1f2933;
+        --muted: #52606d;
+        --accent: #b8542a;
+        --accent-soft: #f2d4c7;
+        --line: rgba(31, 41, 51, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(184, 84, 42, 0.18), transparent 28%),
+          radial-gradient(circle at top right, rgba(56, 127, 112, 0.16), transparent 24%),
+          linear-gradient(180deg, #f7f0e2 0%, var(--bg) 100%);
+      }
+
+      .page {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 40px 24px 72px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, rgba(255, 253, 248, 0.95), rgba(248, 235, 221, 0.92));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 18px 40px rgba(31, 41, 51, 0.08);
+      }
+
+      h1, h2 {
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .hero p,
+      .section-header p,
+      .meta-line {
+        color: var(--muted);
+      }
+
+      .meta-line {
+        margin-top: 10px;
+        font-size: 0.98rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: 0 12px 30px rgba(31, 41, 51, 0.06);
+        overflow: hidden;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+        margin-bottom: 14px;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.88rem;
+        background: var(--panel-strong);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .data-table th {
+        background: var(--accent-soft);
+        color: #51210f;
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+      }
+
+      .data-table td {
+        padding: 9px 12px;
+        border-bottom: 1px solid rgba(31, 41, 51, 0.07);
+        white-space: nowrap;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      .pill-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .pill {
+        border: 1px solid rgba(184, 84, 42, 0.2);
+        background: rgba(255, 253, 248, 0.72);
+        color: #6d2f16;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding: 24px 14px 48px;
+        }
+
+        .hero,
+        .card {
+          padding: 18px;
+          border-radius: 18px;
+        }
+
+        .section-header {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>ArduPilot Log Report</h1>
+        <p class="meta-line">pxf/plane/4-12-2014/329.BIN</p>
+        <div class="pill-row">
+          <span class="pill">16 message types</span>
+          <span class="pill">summary rows shown: 20</span>
+          <span class="pill">preview rows shown: 5</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <section class="card">
+          <div class="section-header">
+            <h2>Message Summary</h2>
+            <p>Dense per-type tables are usually more useful than one wide merged table.</p>
+          </div>
+          <div class="table-wrap">
+            <table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>message_type</th>
+      <th>rows</th>
+      <th>columns</th>
+      <th>timestamp_start</th>
+      <th>timestamp_end</th>
+      <th>sample_fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ATT</td>
+      <td>6145</td>
+      <td>7</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.401</td>
+      <td>TimeMS, Roll, Pitch, Yaw, ErrorRP</td>
+    </tr>
+    <tr>
+      <td>EKF1</td>
+      <td>6145</td>
+      <td>14</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.402</td>
+      <td>TimeMS, Roll, Pitch, Yaw, VN</td>
+    </tr>
+    <tr>
+      <td>EKF2</td>
+      <td>6145</td>
+      <td>13</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.402</td>
+      <td>TimeMS, Ratio, AZ1bias, AZ2bias, VWN</td>
+    </tr>
+    <tr>
+      <td>EKF3</td>
+      <td>6145</td>
+      <td>12</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.402</td>
+      <td>TimeMS, IVN, IVE, IVD, IPN</td>
+    </tr>
+    <tr>
+      <td>EKF4</td>
+      <td>6144</td>
+      <td>12</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.301</td>
+      <td>TimeMS, SV, SP, SH, SMX</td>
+    </tr>
+    <tr>
+      <td>IMU</td>
+      <td>6144</td>
+      <td>8</td>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>2014-12-04 15:13:02.301</td>
+      <td>TimeMS, GyrX, GyrY, GyrZ, AccX</td>
+    </tr>
+    <tr>
+      <td>AHR2</td>
+      <td>5973</td>
+      <td>8</td>
+      <td>2014-12-04 15:03:05.101</td>
+      <td>2014-12-04 15:13:02.301</td>
+      <td>TimeMS, Roll, Pitch, Yaw, Alt</td>
+    </tr>
+    <tr>
+      <td>GPS</td>
+      <td>3291</td>
+      <td>14</td>
+      <td>2014-12-04 15:02:54.040</td>
+      <td>2014-12-04 15:13:02.240</td>
+      <td>Status, TimeMS, Week, NSats, HDop</td>
+    </tr>
+    <tr>
+      <td>UBX3</td>
+      <td>3290</td>
+      <td>6</td>
+      <td>2014-12-04 15:02:55.000</td>
+      <td>2014-12-04 15:13:02.240</td>
+      <td>TimeMS, Instance, hAcc, vAcc, sAcc</td>
+    </tr>
+    <tr>
+      <td>TERR</td>
+      <td>607</td>
+      <td>10</td>
+      <td>2014-12-04 15:02:55.901</td>
+      <td>2014-12-04 15:13:01.901</td>
+      <td>TimeMS, Status, Lat, Lng, Spacing</td>
+    </tr>
+    <tr>
+      <td>UBX1</td>
+      <td>330</td>
+      <td>7</td>
+      <td>2014-12-04 15:02:54.920</td>
+      <td>2014-12-04 15:13:02.340</td>
+      <td>TimeMS, Instance, noisePerMS, jamInd, aPower</td>
+    </tr>
+    <tr>
+      <td>UBX2</td>
+      <td>330</td>
+      <td>7</td>
+      <td>2014-12-04 15:02:54.940</td>
+      <td>2014-12-04 15:13:02.360</td>
+      <td>TimeMS, Instance, ofsI, magI, ofsQ</td>
+    </tr>
+    <tr>
+      <td>PM</td>
+      <td>61</td>
+      <td>9</td>
+      <td>2014-12-04 15:02:57.901</td>
+      <td>2014-12-04 15:12:57.901</td>
+      <td>LTime, MLC, gDt, GDx, GDy</td>
+    </tr>
+    <tr>
+      <td>MODE</td>
+      <td>10</td>
+      <td>4</td>
+      <td>2014-12-04 15:02:47.919</td>
+      <td>2014-12-04 15:08:45.900</td>
+      <td>TimeMS, Mode, ModeNum</td>
+    </tr>
+    <tr>
+      <td>CMD</td>
+      <td>6</td>
+      <td>12</td>
+      <td>2014-12-04 15:02:47.919</td>
+      <td>2014-12-04 15:02:47.919</td>
+      <td>TimeMS, CTot, CNum, CId, Prm1</td>
+    </tr>
+    <tr>
+      <td>STRT</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2014-12-04 15:02:47.919</td>
+      <td>2014-12-04 15:02:47.919</td>
+      <td>SType, CTot</td>
+    </tr>
+  </tbody>
+</table>
+          </div>
+        </section>
+        
+                <section class="card">
+                  <div class="section-header">
+                    <h2>ATT</h2>
+                    <p>6,145 rows x 7 columns</p>
+                  </div>
+                  <div class="table-wrap">
+                    <table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>timestamp</th>
+      <th>TimeMS</th>
+      <th>Roll</th>
+      <th>Pitch</th>
+      <th>Yaw</th>
+      <th>ErrorRP</th>
+      <th>ErrorYaw</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>9739</td>
+      <td>0.250000</td>
+      <td>1.160000</td>
+      <td>271.810000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.101</td>
+      <td>9839</td>
+      <td>-0.350000</td>
+      <td>1.140000</td>
+      <td>271.830000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.200</td>
+      <td>9939</td>
+      <td>-1.070000</td>
+      <td>0.960000</td>
+      <td>271.860000</td>
+      <td>0.090000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.301</td>
+      <td>10039</td>
+      <td>-1.980000</td>
+      <td>0.750000</td>
+      <td>271.860000</td>
+      <td>0.090000</td>
+      <td>0.010000</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.401</td>
+      <td>10139</td>
+      <td>-2.710000</td>
+      <td>0.540000</td>
+      <td>271.840000</td>
+      <td>0.090000</td>
+      <td>0.020000</td>
+    </tr>
+  </tbody>
+</table>
+                  </div>
+                </section>
+                
+                <section class="card">
+                  <div class="section-header">
+                    <h2>IMU</h2>
+                    <p>6,144 rows x 8 columns</p>
+                  </div>
+                  <div class="table-wrap">
+                    <table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>timestamp</th>
+      <th>TimeMS</th>
+      <th>GyrX</th>
+      <th>GyrY</th>
+      <th>GyrZ</th>
+      <th>AccX</th>
+      <th>AccY</th>
+      <th>AccZ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014-12-04 15:02:48.001</td>
+      <td>9739</td>
+      <td>-0.081664</td>
+      <td>-0.000444</td>
+      <td>0.003737</td>
+      <td>-0.950825</td>
+      <td>0.256860</td>
+      <td>-10.286536</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.101</td>
+      <td>9839</td>
+      <td>-0.103856</td>
+      <td>-0.001500</td>
+      <td>0.003807</td>
+      <td>-0.990140</td>
+      <td>0.417294</td>
+      <td>-10.350576</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.200</td>
+      <td>9939</td>
+      <td>-0.152377</td>
+      <td>-0.001567</td>
+      <td>0.007315</td>
+      <td>-0.958083</td>
+      <td>0.466299</td>
+      <td>-10.290702</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.301</td>
+      <td>10039</td>
+      <td>-0.151317</td>
+      <td>0.000262</td>
+      <td>0.007434</td>
+      <td>-0.977283</td>
+      <td>0.631874</td>
+      <td>-10.281796</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:48.401</td>
+      <td>10139</td>
+      <td>-0.111805</td>
+      <td>0.001129</td>
+      <td>0.004604</td>
+      <td>-0.970201</td>
+      <td>0.748863</td>
+      <td>-10.302367</td>
+    </tr>
+  </tbody>
+</table>
+                  </div>
+                </section>
+                
+                <section class="card">
+                  <div class="section-header">
+                    <h2>GPS</h2>
+                    <p>3,291 rows x 14 columns</p>
+                  </div>
+                  <div class="table-wrap">
+                    <table border="1" class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>timestamp</th>
+      <th>Status</th>
+      <th>TimeMS</th>
+      <th>Week</th>
+      <th>NSats</th>
+      <th>HDop</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>RelAlt</th>
+      <th>Alt</th>
+      <th>Spd</th>
+      <th>GCrs</th>
+      <th>VZ</th>
+      <th>T</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2014-12-04 15:02:54.040</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>-0.060000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>15778</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:55.000</td>
+      <td>3</td>
+      <td>399793000</td>
+      <td>1821</td>
+      <td>10</td>
+      <td>1.740000</td>
+      <td>42.853903</td>
+      <td>-2.645132</td>
+      <td>0.040000</td>
+      <td>510.530000</td>
+      <td>0.080000</td>
+      <td>180.190000</td>
+      <td>-0.120000</td>
+      <td>16738</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:55.200</td>
+      <td>3</td>
+      <td>399793200</td>
+      <td>1821</td>
+      <td>10</td>
+      <td>1.740000</td>
+      <td>42.853903</td>
+      <td>-2.645131</td>
+      <td>0.070000</td>
+      <td>510.510000</td>
+      <td>0.040000</td>
+      <td>180.190000</td>
+      <td>-0.080000</td>
+      <td>16938</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:55.380</td>
+      <td>3</td>
+      <td>399793400</td>
+      <td>1821</td>
+      <td>10</td>
+      <td>1.740000</td>
+      <td>42.853903</td>
+      <td>-2.645131</td>
+      <td>0.020000</td>
+      <td>510.480000</td>
+      <td>0.130000</td>
+      <td>180.190000</td>
+      <td>-0.060000</td>
+      <td>17118</td>
+    </tr>
+    <tr>
+      <td>2014-12-04 15:02:55.560</td>
+      <td>3</td>
+      <td>399793600</td>
+      <td>1821</td>
+      <td>10</td>
+      <td>1.740000</td>
+      <td>42.853903</td>
+      <td>-2.645131</td>
+      <td>0.020000</td>
+      <td>510.550000</td>
+      <td>0.140000</td>
+      <td>180.190000</td>
+      <td>-0.150000</td>
+      <td>17298</td>
+    </tr>
+  </tbody>
+</table>
+                  </div>
+                </section>
+                
+      </section>
+    </main>
+  </body>
+</html>
